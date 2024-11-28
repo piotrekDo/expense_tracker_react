@@ -19,7 +19,7 @@ export const CategoryPage = () => {
     <VStack w={'100%'} minH={PAGE_MIN_HEIGHT}>
       {!isPosting && (
         <Button w={'100%'} h={'40px'} colorScheme='green' onClick={() => setIsPosting(s => !s)}>
-          Dodaj nową
+          Dodaj nową kategorię
         </Button>
       )}
       {isPosting && (
@@ -32,7 +32,7 @@ export const CategoryPage = () => {
           </InputRightAddon>
         </InputGroup>
       )}
-      <Flex mt={5} justifyContent={'center'} alignItems={'center'}>
+      <Flex w={'100%'} mt={5} justifyContent={'center'} alignItems={'center'}>
         {categories?.map(c => (
           <Tag key={c.id} colorScheme='teal' variant={'solid'} size={'lg'} mx={1}>
             {c.name}

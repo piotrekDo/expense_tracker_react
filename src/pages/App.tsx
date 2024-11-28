@@ -1,6 +1,8 @@
 import { Box, VStack } from '@chakra-ui/react';
 import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 export const App = () => {
   return (
@@ -11,9 +13,11 @@ export const App = () => {
       color={'whiteAlpha.800'}
     >
       <Navbar />
-      <Box w={'100%'} h={'100%'} px={5}>
-        <Outlet />
-      </Box>
+      <DndProvider backend={HTML5Backend}>
+        <Box w={'100%'} h={'100%'} px={5}>
+          <Outlet />
+        </Box>
+      </DndProvider>
     </VStack>
   );
 };
