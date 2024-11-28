@@ -9,8 +9,8 @@ export interface ReportRaw {
 }
 
 export interface Report {
-    from: string;
-    to: string;
+    from: Date;
+    to: Date;
     summary: TransactionQueryResult;
     groupsReport: GroupsReport[];
     categoriesReport: CategoryReport[];
