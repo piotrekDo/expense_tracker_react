@@ -19,7 +19,7 @@ export const DragableCategory = ({ c, alreadySelected }: Props) => {
       });
 
   return (
-    <Tag ref={drag} key={c.id} colorScheme={alreadySelected ? 'green' : 'teal'} variant={'solid'} size={'lg'} mx={1} cursor={'pointer'}>
+    <Tag ref={drag} key={c.id} colorScheme={alreadySelected ? 'green' : 'teal'} variant={'solid'} size={'lg'} mx={1} cursor={'pointer'} m={1}>
       {c.name}
     </Tag>
   );

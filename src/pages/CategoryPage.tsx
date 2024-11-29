@@ -32,9 +32,9 @@ export const CategoryPage = () => {
           </InputRightAddon>
         </InputGroup>
       )}
-      <Flex w={'100%'} mt={5} justifyContent={'center'} alignItems={'center'}>
+      <Flex w={'100%'} mt={5} justifyContent={'start'} alignItems={'center'} wrap={'wrap'}>
         {categories?.map(c => (
-          <Tag key={c.id} colorScheme='teal' variant={'solid'} size={'lg'} mx={1}>
+          <Tag key={c.id} colorScheme='teal' variant={'solid'} size={'lg'} m={1}>
             {c.name}
           </Tag>
         ))}

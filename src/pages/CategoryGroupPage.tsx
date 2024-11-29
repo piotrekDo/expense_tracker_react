@@ -53,7 +53,7 @@ export const CategoryGroupPage = () => {
       )}
 
       {isUpdating > -1 && (
-        <Flex w={'100%'} mt={5} justifyContent={'center'} alignItems={'center'}>
+        <Flex w={'100%'}  m={5} justifyContent={'start'} alignItems={'center'} wrap={'wrap'}>
           {categories?.map(c => {
             const isAlreadySelected = categoriesIncludedInUpdate.some(cat => cat.id === c.id) || false;
             return <DragableCategory key={c.id} c={c} alreadySelected={isAlreadySelected} />;
@@ -61,7 +61,7 @@ export const CategoryGroupPage = () => {
         </Flex>
       )}
 
-      <Flex w={'100%'} mt={5} justifyContent={'center'} alignItems={'start'}>
+      <Flex w={'100%'} mt={5} justifyContent={'center'} alignItems={'start'} wrap={'wrap'}>
         {isUpdating === -1 &&
           groups?.map(g => (
             <CategoryGroupCard key={g.categoryGroupId} g={g} handleStartUpdating={handleStartUpdating} />

@@ -233,6 +233,16 @@ const NAV_ITEMS: Array<NavItem> = [
     href: '/report',
   },
   {
+    label: 'Transackje',
+    children: [
+      {
+        label: 'Nowe',
+        subLabel: 'przypisz kategorie',
+        href: '/transactions-new',
+      },
+    ],
+  },
+  {
     label: 'Kategorie',
     children: [
       {
@@ -246,13 +256,5 @@ const NAV_ITEMS: Array<NavItem> = [
         href: '/groups',
       },
     ],
-  },
-  {
-    label: 'Learn Design',
-    href: '#',
-  },
-  {
-    label: 'Hire Designers',
-    href: '#',
   },
 ];

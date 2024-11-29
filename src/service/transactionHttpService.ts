@@ -1,12 +1,22 @@
 import { AxiosResponse } from 'axios';
 import APIclient from './apiClient';
-import { TransactionQueryResultRaw, TransactionRaw } from '../model/Transaction';
+import { ManageCategories, TransactionQueryResultRaw, TransactionRaw } from '../model/Transaction';
 import { ReportRaw } from '../model/Report';
 
 const TRAN_ENDPOINT = '/api/v1/transactions';
 
 export const fetchTransactions = (from: string, to: string, signal?: AbortSignal) => {
   return APIclient.get<TransactionQueryResultRaw>(TRAN_ENDPOINT + '/all', {
+    signal,
+    params: {
+      from: from,
+      to: to,
+    },
+  }).then((res: AxiosResponse<TransactionQueryResultRaw>) => res.data);
+};
+
+export const fetchNewTransactions = (from: string, to: string, signal?: AbortSignal) => {
+  return APIclient.get<TransactionQueryResultRaw>(TRAN_ENDPOINT + '/all-no-categories', {
     signal,
     params: {
       from: from,
@@ -89,10 +99,8 @@ export const fetchReport = (from: string, to: string, signal?: AbortSignal) => {
   }).then((res: AxiosResponse<ReportRaw>) => res.data);
 };
 
-export const addCategoriesToTransaction = (transaction: number, categories: number[]) => {
-  return APIclient.post(`${TRAN_ENDPOINT}/add-categories/${transaction}`, null, {
-    params: {
-      categories: categories,
-    },
-  }).then((res: AxiosResponse<TransactionRaw>) => res.data);
+export const manageCategories = (dto: ManageCategories) => {
+  return APIclient.post(TRAN_ENDPOINT + '/manage-categories', dto).then(
+    (res: AxiosResponse<TransactionRaw>) => res.data
+  );
 };

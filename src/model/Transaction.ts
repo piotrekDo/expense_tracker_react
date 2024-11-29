@@ -49,3 +49,8 @@ export interface TransactionQueryResult {
   data: Transaction[];
   merchants: string[];
 }
+
+export interface ManageCategories {
+  transaction: number;
+  categories: number[];
+}

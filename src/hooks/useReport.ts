@@ -22,7 +22,7 @@ const useReport = (from: string, to: string) => {
 
 export default useReport;
 
-const getSummaryFormatted = (summary: TransactionQueryResultRaw): TransactionQueryResult => {
+export const getSummaryFormatted = (summary: TransactionQueryResultRaw): TransactionQueryResult => {
   return {
     ...summary,
     data: summary.data.map(tran => ({

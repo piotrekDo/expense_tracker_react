@@ -21,11 +21,12 @@ export const CategoryGroupCard = ({ g, handleStartUpdating }: Props) => {
       bg={'teal.600'}
       borderRadius={'15px'}
       p={3}
+      m={2}
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
     >
       <HStack w={'100%'} position={'relative'}>
-        <Text>{g.categoryGroupName}</Text>
+        <Text fontWeight={'700'} fontSize={'1.3rem'} as={'em'}>{g.categoryGroupName}</Text>
         <Box
           pos={'absolute'}
           top={0}
