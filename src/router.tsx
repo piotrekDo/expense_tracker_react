@@ -5,6 +5,7 @@ import { CategoryPage } from './pages/CategoryPage';
 import { CategoryGroupPage } from './pages/CategoryGroupPage';
 import { TransactionsPage } from './pages/TransactionsPage';
 import { NewTransactionsPage } from './pages/NewTransactionsPage';
+import { TransactionsAllPage } from './pages/TransactionsAllPage';
 
 
 const router = createBrowserRouter([
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
       { path: '', element: <ReportPage /> },
       { path: '/report', element: <ReportPage /> },
       { path: '/transactions', element: <TransactionsPage /> },
+      { path: '/transactions-all', element: <TransactionsAllPage /> },
       { path: '/transactions-new', element: <NewTransactionsPage /> },
       { path: '/categories', element: <CategoryPage /> },
       { path: '/groups', element: <CategoryGroupPage /> },

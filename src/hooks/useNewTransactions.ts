@@ -6,8 +6,7 @@ import { getSummaryFormatted } from './useReport';
 const useNewTransactions = (from: string, to: string) => {
   return useQuery<TransactionQueryResult, Error>({
     queryKey: ['transactions-new'],
-    queryFn: ({ signal }) => fetchNewTransactions(from, to, signal)
-    .then(res => getSummaryFormatted(res)),
+    queryFn: ({ signal }) => fetchNewTransactions(from, to, signal).then(res => getSummaryFormatted(res)),
   });
 };
 

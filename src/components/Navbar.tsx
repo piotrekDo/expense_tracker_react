@@ -236,6 +236,11 @@ const NAV_ITEMS: Array<NavItem> = [
     label: 'Transackje',
     children: [
       {
+        label: 'Wszystkie',
+        subLabel: 'sprawdź wg daty',
+        href: '/transactions-all',
+      },
+      {
         label: 'Nowe',
         subLabel: 'przypisz kategorie',
         href: '/transactions-new',

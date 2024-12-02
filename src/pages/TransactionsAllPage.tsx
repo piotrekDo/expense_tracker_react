@@ -1,15 +1,15 @@
+import { NotAllowedIcon } from '@chakra-ui/icons';
 import { Button, Flex, HStack, Input, InputGroup, InputRightAddon, Text, VStack } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { PAGE_MIN_HEIGHT } from '../../library';
 import { DragableCategory } from '../components/DragableCategory';
 import { DropableTransactionCard } from '../components/DropableTransactionCard';
 import useCategories from '../hooks/useCategories';
-import useNewTransactions from '../hooks/useNewTransactions';
+import useTransactions from '../hooks/useTransactions';
 import { Category } from '../model/Category';
-import { NotAllowedIcon } from '@chakra-ui/icons';
 import { toDateString } from '../utils';
 
-export const NewTransactionsPage = () => {
+export const TransactionsAllPage = () => {
   const today = new Date();
   const firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
   const lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0);
@@ -19,7 +19,7 @@ export const NewTransactionsPage = () => {
   const [filteredCategories, setFilteredCategories] = useState<Category[]>([]);
 
   const { data: categories } = useCategories();
-  const { data: newTransactions, refetch: refetchNewTransactions } = useNewTransactions(toDateString(from), toDateString(to));
+  const { data: transactions, refetch: refetchNewTransactions } = useTransactions(toDateString(from), toDateString(to));
 
   useEffect(() => {
     setFilteredCategories(categories || []);
@@ -46,15 +46,15 @@ export const NewTransactionsPage = () => {
       <Button onClick={minusMonth}>+</Button>
       <Text>{from.toLocaleDateString('pl-PL', { month: 'long', year: 'numeric' })}</Text>
       <HStack>
-        <Text>Ilość: {newTransactions?.quantity}</Text>
-        <Text>Min wartość: {newTransactions?.minValue ? newTransactions.minValue.toFixed(2) : 0}</Text>
-        <Text>Mix wartość: {newTransactions?.maxValue ? newTransactions.maxValue.toFixed(2) : 0}</Text>
-        <Text>Uznania: {newTransactions?.debits}</Text>
-        <Text>Obciążenia: {newTransactions?.credits}</Text>
-        <Text>Suma uznań: {newTransactions?.debitsSum ? newTransactions.debitsSum.toFixed(2) : 0}</Text>
-        <Text>Suma obciążeń: {newTransactions?.creditsSum ? newTransactions.creditsSum.toFixed(2) : 0}</Text>
-        <Text>Różnica: {newTransactions?.difference ? newTransactions.difference.toFixed(2) : 0}</Text>
-        <Text>Iość sprzedawców: {newTransactions?.merchantCount}</Text>
+        <Text>Ilość: {transactions?.quantity}</Text>
+        <Text>Min wartość: {transactions?.minValue ? transactions.minValue.toFixed(2) : 0}</Text>
+        <Text>Mix wartość: {transactions?.maxValue ? transactions.maxValue.toFixed(2) : 0}</Text>
+        <Text>Uznania: {transactions?.debits}</Text>
+        <Text>Obciążenia: {transactions?.credits}</Text>
+        <Text>Suma uznań: {transactions?.debitsSum ? transactions.debitsSum.toFixed(2) : 0}</Text>
+        <Text>Suma obciążeń: {transactions?.creditsSum ? transactions.creditsSum.toFixed(2) : 0}</Text>
+        <Text>Różnica: {transactions?.difference ? transactions.difference.toFixed(2) : 0}</Text>
+        <Text>Iość sprzedawców: {transactions?.merchantCount}</Text>
       </HStack>
       <HStack w={'100%'} justify={'center'}>
         <Flex w={'25%'} h={'100%'}>
@@ -82,7 +82,7 @@ export const NewTransactionsPage = () => {
           </VStack>
         </Flex>
         <Flex w={'100%'} wrap={'wrap'} mt={5} maxW={'1200px'}>
-          {newTransactions?.data.map(t => (
+          {transactions?.data.map(t => (
             <DropableTransactionCard key={t.tranSystemId} t={t} />
           ))}
         </Flex>
